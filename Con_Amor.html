@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Viviana 💖</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at top, #ffb6c1, #ff5f9e, #7b2ff7);
+    animation: fondo 15s infinite alternate;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    overflow: hidden;
+}
+
+@keyframes fondo {
+    0% { background-position: left; }
+    100% { background-position: right; }
+}
+
+/* corazones flotando */
+.corazon-flotante {
+    position: absolute;
+    color: rgba(255,255,255,0.7);
+    animation: flotar 8s linear infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+.contenedor {
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.mensaje-previo {
+    font-size: 28px;
+    margin-bottom: 20px;
+    animation: aparecer 3s ease forwards;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+button {
+    padding: 14px 30px;
+    border-radius: 30px;
+    border: none;
+    background: #ff3366;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.carta {
+    width: 280px;
+    height: 180px;
+    background: #fff;
+    border-radius: 15px;
+    margin: 30px auto;
+    display: none;
+    cursor: pointer;
+    position: relative;
+    animation: zoom 1s ease forwards;
+}
+
+@keyframes zoom {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+.corazon {
+    font-size: 45px;
+    color: #ff3366;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+}
+
+.texto-carta {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-weight: bold;
+    color: #ff3366;
+}
+
+.mensaje {
+    display: none;
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    color: black;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    animation: fade 3s ease forwards;
+    position: relative;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fecha {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #444;
+}
+
+/* BOTÓN CERRAR */
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- corazones automáticos -->
+<script>
+for (let i = 0; i < 25; i++) {
+    let c = document.createElement("div");
+    c.className = "corazon-flotante";
+    c.innerHTML = "❤️";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(c);
+}
+</script>
+
+<div class="contenedor">
+    <div class="mensaje-previo">
+        Porque te amo a pesar de la distancia 💞
+    </div>
+
+    <button id="btn" onclick="mostrarCarta()">Haz clic aquí 💌</button>
+
+    <div class="carta" id="carta" onclick="abrirCarta()">
+        <div class="corazon">❤️</div>
+        <div class="texto-carta">Presióname</div>
+    </div>
+
+    <div class="mensaje" id="mensaje">
+        <button class="cerrar" onclick="cerrarCarta()">Cerrar ✖</button>
+
+        <p>
+        Viviana, mi amor…<br><br>
+
+        Aunque la distancia nos haya puesto a prueba más de una vez, jamás ha logrado apagar lo que siento por ti.
+        Hace tres años comenzamos esta historia, vivimos momentos difíciles, nos separamos, y aun así el amor
+        nos volvió a encontrar.<br><br>
+
+        Gracias por seguir esperando, por creer en nosotros incluso cuando no puedo abrazarte ni darte un regalo
+        físico. Perdón por no estar ahí todavía, pero créeme que cada día trabajo para que muy pronto podamos
+        mirarnos a los ojos y confirmar que todo valió la pena.<br><br>
+
+        Aprendí a usar este lenguaje solo para poder regalarte algo diferente, algo que naciera del corazón.
+        A pesar de la distancia, de los problemas y del tiempo, siempre te he amado… y siempre lo haré.
+        </p>
+
+        <img src="viviana.jpg" width="220" style="border-radius:15px; box-shadow:0 0 15px pink; margin-top:20px;">
+
+        <div class="fecha">
+            Con amor, 14/02/2026
+        </div>
+    </div>
+</div>
+
+<!-- MÚSICA -->
+<audio autoplay loop>
+    <source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function mostrarCarta() {
+    document.getElementById("btn").style.display = "none";
+    document.getElementById("carta").style.display = "block";
+}
+
+function abrirCarta() {
+    document.getElementById("carta").style.display = "none";
+    document.getElementById("mensaje").style.display = "block";
+}
+
+function cerrarCarta() {
+    document.getElementById("mensaje").style.display = "none";
+    document.getElementById("btn").style.display = "inline-block";
+}
+</script>
+
+</body>
+</html>
